@@ -1,15 +1,39 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+public class Main {
+
+
+    public static String dateLocal( String name, int duration, String args) throws IllegalArgumentException {
+        if (name.isEmpty() || name == null) return"Error: Event name cannot be empty";
+        if (duration <= 0) return "Error: Duration must be positive";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        Duration du = Duration.ofMinutes(duration);
+        LocalDateTime datepass = LocalDateTime.parse(args,formatter);
+        LocalDateTime date = LocalDateTime.now();
+
+
+        if (datepass.isBefore(date)){
+            return "Error: Event cannot be in the past";
         }
+
+
+
+        return String.format("Valid event: %s at %s",name, datepass.format(formatter));
+    }
+
+    public static void main(String[] args) {
+        try {
+            System.out.println(dateLocal("Trabalho",9,"2025-10-23 16:50"));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: Invalid date format");
+        }catch (DateTimeParseException e){
+            System.out.println("Error: Invalid date format");
+        }
+
+
     }
 }
