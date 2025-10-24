@@ -11,7 +11,7 @@ public class Event {
     private LocalDateTime dateTime;
 
     public Event(String name, int duration, String dateTime) throws DateTimeParseException,IllegalArgumentException {
-        this.name = name;
+        this.name = name.trim();
         this.duration = duration;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         this.dateTime = LocalDateTime.parse(dateTime,formatter);
