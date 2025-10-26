@@ -33,8 +33,11 @@ O sistema permite **criar, validar, armazenar, pesquisar, analisar e gerar relat
 SistemaGerenciadorEventos/
 ├── src/               
 │   ├── domain/
-│   │   └── Event.java           # Classe que representa o evento (entidade principal).
+│   │   └── Event.java             # Classe que representa o evento (entidade principal).
 │   ├── service/
-│   │   └── EventUtils.java      # Geração de relatórios e análises, Contém regras de validação, Gerencia criação, remoção e busca de eventos.
-│   └── Main.java                # Classe principal: ponto de entrada do programa.
+│   │   ├── EventAnalysis.java     # Análises.
+|   |   ├── EventReporting.java    # Geração de relatórios.
+|   |   ├── EventSearch.java       # busca de eventos.
+|   |   └── EventValidation.java   # Contém regras de validação e Gerencia criação.
+│   └── Main.java                  # Classe principal: ponto de entrada do programa.
 └── README.md
