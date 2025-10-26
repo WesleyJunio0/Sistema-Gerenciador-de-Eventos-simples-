@@ -1,6 +1,5 @@
 package Domain;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -31,9 +30,9 @@ public class Event {
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return name + ' ' +
-                "ás " + duration +
+                "ás " + dateTime.getHour() + ":" +dateTime.getMinute() +
                 " do dia " + dateTime.format(formatter);
     }
 }
